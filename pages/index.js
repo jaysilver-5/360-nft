@@ -79,8 +79,9 @@ export default function Home() {
                         <h1 className={`color-primary ${fonts.mont}`} style={{fontWeight: 300}}>Welcome Friend,<br/>please log in</h1>
                       </div>
                   </div>
-
+                  
                   {/* Show Waitlist if ! authenticated */}
+
                   <div style={{paddingBottom: '50px'}}>
                     {/* {typeof window !== 'undefined' && <Waitlist className='container--waitlistapi' api_key='E7YQLY' waitlist_link='https://trapchain.herokuapp.com/' />} */}
                   </div>

@@ -18,8 +18,8 @@ import Button from '../../components/basic/button/Button';
 import styles from '../../styles/Accounts.module.css';
 import Loader from '../../components/basic/loader/Loader';
 import { useMediaQuery } from 'react-responsive';
-import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
-import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+// import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
+// import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 
 const connectedHandler = (data) => console.log('CONNECTED', data);
 const disconnectedHandler = (data) => console.log('DISCONNECTED', data);
@@ -34,7 +34,7 @@ const disconnectedHandler = (data) => console.log('DISCONNECTED', data);
         // )
         // const [userInfo, setUserInfo] = useState<Partial<UserInfo>>()
         // const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(null)
-        const address = useAddress();
+        // const address = useAddress();
         const handleLogin = async () => {
             try {
                 const authKitSignData = await Web3AuthModalPack.signIn();
@@ -55,65 +55,65 @@ const disconnectedHandler = (data) => console.log('DISCONNECTED', data);
             }
         };
         const isPortrait = true; // or false, depending on your use case
-        useEffect(() => {
-            (async () => {
-              const options = {
-                // clientId: import.meta.env.VITE_WEB3AUTH_CLIENT_ID || '',
-                web3AuthNetwork: 'testnet',
-                chainConfig: {
-                //   chainNamespace: CHAIN_NAMESPACES.EIP155,
-                  chainId: '0x1',
-                  rpcTarget: `https://polygon-mumbai.g.alchemy.com/v2/1GH1bXOacm3BdslpGZrNlIPOMthENZdi}`
-                },
-                uiConfig: {
-                  theme: 'dark',
-                  loginMethodsOrder: ['google', 'facebook']
-                }
-              };
-              const WALLET_ADAPTERS = {
-                TORUS_EVM: 'torusEVM',
-                METAMASK: 'metamask'
-              };              
+        // useEffect(() => {
+        //     (async () => {
+        //       const options = {
+        //         // clientId: import.meta.env.VITE_WEB3AUTH_CLIENT_ID || '',
+        //         web3AuthNetwork: 'testnet',
+        //         chainConfig: {
+        //         //   chainNamespace: CHAIN_NAMESPACES.EIP155,
+        //           chainId: '0x1',
+        //           rpcTarget: `https://polygon-mumbai.g.alchemy.com/v2/1GH1bXOacm3BdslpGZrNlIPOMthENZdi}`
+        //         },
+        //         uiConfig: {
+        //           theme: 'dark',
+        //           loginMethodsOrder: ['google', 'facebook']
+        //         }
+        //       };
+        //       const WALLET_ADAPTERS = {
+        //         TORUS_EVM: 'torusEVM',
+        //         METAMASK: 'metamask'
+        //       };              
 
-              const modalConfig = {
-                [WALLET_ADAPTERS.TORUS_EVM]: {
-                  label: 'torus',
-                  showOnModal: false
-                },
-                [WALLET_ADAPTERS.METAMASK]: {
-                  label: 'metamask',
-                  showOnDesktop: true,
-                  showOnMobile: false
-                }
-              };
-              const openloginAdapter = new OpenloginAdapter({
-                loginSettings: {
-                  mfaLevel: 'mandatory'
-                },
-                adapterSettings: {
-                  uxMode: 'popup',
-                  whiteLabel: {
-                    name: 'Safe'
-                  }
-                }
-              });
-              const web3AuthModalPack = new Web3AuthModalPack({
-                txServiceUrl: 'https://safe-transaction-goerli.safe.global'
-              })
-            //   await web3AuthModalPack.init({ options, adapters: [openloginAdapter], modalConfig })
+        //       const modalConfig = {
+        //         [WALLET_ADAPTERS.TORUS_EVM]: {
+        //           label: 'torus',
+        //           showOnModal: false
+        //         },
+        //         [WALLET_ADAPTERS.METAMASK]: {
+        //           label: 'metamask',
+        //           showOnDesktop: true,
+        //           showOnMobile: false
+        //         }
+        //       };
+        //       const openloginAdapter = new OpenloginAdapter({
+        //         loginSettings: {
+        //           mfaLevel: 'mandatory'
+        //         },
+        //         adapterSettings: {
+        //           uxMode: 'popup',
+        //           whiteLabel: {
+        //             name: 'Safe'
+        //           }
+        //         }
+        //       });
+        //       const web3AuthModalPack = new Web3AuthModalPack({
+        //         txServiceUrl: 'https://safe-transaction-goerli.safe.global'
+        //       })
+        //     //   await web3AuthModalPack.init({ options, adapters: [openloginAdapter], modalConfig })
 
-                // web3AuthModalPack.subscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler)
+        //         // web3AuthModalPack.subscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler)
 
-                // web3AuthModalPack.subscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler)
+        //         // web3AuthModalPack.subscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler)
 
-                // setWeb3AuthModalPack(web3AuthModalPack)
+        //         // setWeb3AuthModalPack(web3AuthModalPack)
 
-                // return () => {
-                //     web3AuthModalPack.unsubscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler)
-                //     web3AuthModalPack.unsubscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler)
-                // }          
-            })();
-          }, []);
+        //         // return () => {
+        //         //     web3AuthModalPack.unsubscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler)
+        //         //     web3AuthModalPack.unsubscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler)
+        //         // }          
+        //     })();
+        //   }, []);
           
             // useEffect(() => {
             //     if (web3AuthModalPack) {
@@ -134,7 +134,7 @@ const disconnectedHandler = (data) => console.log('DISCONNECTED', data);
                 
                     
                     {/* { !isAuthenticated ? */}
-                        <div className='row'>
+                        <div className='flex'>
                             <LAccountsCol logo='../images/accounts/360in.svg' image='../images/accounts/sign-in-banner.jpg' alt=''/>
                             <RAccountsCol>
                                 <>
@@ -191,12 +191,12 @@ const disconnectedHandler = (data) => console.log('DISCONNECTED', data);
                                 </>
                             </RAccountsCol>
                         </div>
-                        :
+                        {/* :
                         <div className='centerDivItems' style={{flexDirection: 'column', height: '100vh'}}>
                             <h1 className={`color-primary ${fonts.mont}`} style={{fontWeight: 300, paddingTop: '50px'}}>Signing You In</h1>
                             <br/>
                             <Loader/>
-                        </div>
+                        </div> */}
                     
                     {/* } */}
                 </Layout>

@@ -26,23 +26,24 @@ const Signout = () => {
 
     return (
         <Layout backgroundImage='signout'>
-                <div className='row'>
+                <div className='flex'>
                     <LAccountsCol logo='../images/accounts/360sOut.svg' image='../images/accounts/sign-out-banner.jpg' alt=''/>
                     <RAccountsCol>
                         <>
-                            <h1 className={`color-primary ${fonts.druk}`}>Are you sure you wanna sign out from <span className={`color-secondary ${fonts.gilroy}`}>360</span> NFT?</h1>
+                            <h1 className={`color-primary text-2xl ${fonts.druk}`}>Are you sure you wanna sign out from <span className={`color-secondary ${fonts.gilroy}`}>360</span> NFT?</h1>
                             <p className={`color-subtitle ${fonts.mont}`} style={{fontWeight: 500}}>Double check that you have an account recovery email just in case (resend from your settings).</p>
                             <div className={styles.footerRow}>
                                 <div className={styles.footerLeft}>
                                     <p className='color-subtitle'>Have another option?</p>
-                                    <Link href='/accounts/email'><a className='color-secondary'>Change Email</a></Link>
+                                    <Link href='/accounts/email' className='color-secondary'>Change Email</Link>
                                 </div>
                                 <div className={styles.footerRight}>
                                     <input type='hidden' name='{{ redirect_field_name }}' value='{{ redirect_field_value }}'/>
                                     <div style={{display: 'flex', flexDirection: 'row'}}>
                                         <Button isLink={1} href='/playlists' marginRight='24px' bg='dark' text='Cancel'/>
                                         <Button onClick={Logout} bg='greenToPurple'>
-                                            {isLoggingOut && <span className='spinner-border spinner-border-sm' style={{margin: '0 24px'}} role='status' aria-hidden='true'></span>}
+                                            {/* {isLoggingOut && <span className='spinner-border spinner-border-sm' style={{margin: '0 24px'}} role='status' aria-hidden='true'></span>} */}
+                                            {/* <span className='spinner-border spinner-border-sm' style={{margin: '0 24px'}} role='status' aria-hidden='true'></span> */}
                                             Sign Out
                                         </Button>
                                     </div>

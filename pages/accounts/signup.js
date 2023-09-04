@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Alert } from 'react-bootstrap'
-import { useMoralis, useMoralisCloudFunction, useMoralisFile } from 'react-moralis'
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link'
@@ -15,30 +14,30 @@ import styles from '../../styles/Accounts.module.css'
 
 const Signup = () => {
     const router = useRouter()
-    const { Moralis } = useMoralis()
+    // const { Moralis } = useMoralis()
     const uMoralisUsername = useSelector(state => state.user.moralisUserName)
     const [fullname, setFullname] = useState('')
     const [username, setUsername] = useState('')
     const [validationError, setValidationError] = useState('')
 
-    const { fetch, data, error } = useMoralisCloudFunction('usernameAlreadyExists', { uname: username }, { autoFetch: false })
+    // const { fetch, data, error } = useMoralisCloudFunction('usernameAlreadyExists', { uname: username }, { autoFetch: false })
 
-    useEffect( async () => {
-        console.log(data);
-        if (data == false){
-            const UserClass = await Moralis.Object.extend('User')
-            const query = new Moralis.Query(UserClass).equalTo('username', uMoralisUsername)
-            const results = await query.find()
-            const user = JSON.parse(JSON.stringify(results))
-            const objId = (user[0].objectId)
-            const userObj = await new Moralis.Query(UserClass).get(objId)
-            userObj.set('trapUsername', username)
-            userObj.set('name', fullname)
-            await userObj.save()
-            router.push('/accounts/signin')
-        } else if (data == true)
-                setValidationError('Username already exists')
-    }, [data])
+    // useEffect( async () => {
+    //     console.log(data);
+    //     if (data == false){
+    //         const UserClass = await Moralis.Object.extend('User')
+    //         const query = new Moralis.Query(UserClass).equalTo('username', uMoralisUsername)
+    //         const results = await query.find()
+    //         const user = JSON.parse(JSON.stringify(results))
+    //         const objId = (user[0].objectId)
+    //         const userObj = await new Moralis.Query(UserClass).get(objId)
+    //         userObj.set('trapUsername', username)
+    //         userObj.set('name', fullname)
+    //         await userObj.save()
+    //         router.push('/accounts/signin')
+    //     } else if (data == true)
+    //             setValidationError('Username already exists')
+    // }, [data])
 
     const createAccount = async () =>{
         if (fullname) {
@@ -57,7 +56,7 @@ const Signup = () => {
 
     return (
         <Layout backgroundImage='signup'>
-            <div className='row'>
+            <div className='flex'>
                 <LAccountsCol logo='../images/accounts/360sUp.svg' image='../images/accounts/sign-up-banner.jpg' alt=''/>
                 <RAccountsCol>
                     <>

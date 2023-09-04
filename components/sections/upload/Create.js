@@ -12,7 +12,7 @@ import { useModal } from "hooks/useModal";
 import { useAuth } from "hooks/useAuth";
 import { useUser } from "hooks/useUser";
 
-function createDirectListing(contractAddress, tokenId, price) {
+export default function createDirectListing(contractAddress, tokenId, price) {
     try {
       const transaction = marketplace?.direct.createListing({
         assetContractAddress: contractAddress, // Contract Address of the NFT
@@ -28,5 +28,4 @@ function createDirectListing(contractAddress, tokenId, price) {
     } catch (error) {
       console.error(error);
     }
-  }
-export default function Create() 
+  };
